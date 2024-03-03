@@ -12,21 +12,21 @@ int balance(const binary_tree_t *tree, char *direction)
 	int count;
 
 	if (!tree)
-		return 0;
+		return (0);
 
-	if (direction == "left")
+	if (strcmp(direction), "left" == 0)
 	{
 		if (tree->left)
-			return 1;
+			return (1);
 		count = balance(tree->left, "left");
 	}
 	else
 	{
 		if (tree->right)
-			return 1;
+			return (1);
 		count = balance(tree->right, "right");
 	}
-	return count;
+	return (count);
 }
 
 /**
@@ -41,14 +41,14 @@ int binary_tree_balance(const binary_tree_t *tree)
 	int lbFactor, rbFactor;
 
 	if (!tree)
-		return 0;
+		return (0);
 	lbFactor = balance(tree, "left");
 	rbFactor = balance(tree, "right");
 
 	if (lbFactor > rbFactor)
-		return lbFactor;
+		return (lbFactor);
 	else if (rbFactor > lbFactor)
 		return (-rbFactor);
 	else
-		return 0;
+		return (0);
 }
