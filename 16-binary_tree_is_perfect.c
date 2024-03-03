@@ -10,9 +10,9 @@
  */
 int find_depth_left(const binary_tree_t *tree)
 {
-    if (!tree->left)
-        return 0;
-    return 1 + find_depth_left(tree->left);
+	if (!tree->left)
+		return (0);
+	return (1 + find_depth_left(tree->left));
 }
 
 /**
@@ -26,13 +26,13 @@ int find_depth_left(const binary_tree_t *tree)
  */
 int isPerfect(const binary_tree_t *tree, int depth, int level)
 {
-    if (!tree->left && !tree->right)
-        return depth == (level + 1);
+	if (!tree->left && !tree->right)
+		return (depth == (level + 1));
 
-    if (!tree->left || !tree->right)
-        return 0;
+	if (!tree->left || !tree->right)
+		return (0);
 
-    return isPerfect(tree->left, depth, level + 1) && isPerfect(tree->right, depth, level + 1);
+	return (isPerfect(tree->left, depth, level + 1) && isPerfect(tree->right, depth, level + 1));
 }
 /**
  * binary_tree_is_perfect - Checks if a binary tree is perfect.
@@ -43,12 +43,12 @@ int isPerfect(const binary_tree_t *tree, int depth, int level)
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-    int depth;
+	int depth;
 
-    if (tree == NULL)
-        return 0;
+	if (tree == NULL)
+		return (0);
 
-    depth = find_depth_left(tree);
+	depth = find_depth_left(tree);
 
-    return isPerfect(tree, depth + 1, 0);
+	return (isPerfect(tree, depth + 1, 0));
 }
