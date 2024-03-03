@@ -1,23 +1,5 @@
 #include "binary_trees.h"
 
-/**
- * binary_tree_is_perfect - Checks if a binary tree is perfect.
- *
- * @tree: A pointer to the root node of the tree to check.
- *
- * Return: If the tree is perfect, it returns 1. Otherwise, it returns 0.
- */
-int binary_tree_is_perfect(const binary_tree_t *tree)
-{
-    if (tree == NULL)
-        return 0;
-
-    // Calculate the depth of the leftmost leaf node
-    int depth = find_depth_left(tree);
-
-    // Check if the tree satisfies the conditions for a perfect binary tree
-    return isPerfect(tree, depth, 0);
-}
 
 /**
  * find_depth_left - Finds the depth of the leftmost leaf in a binary tree.
@@ -51,4 +33,22 @@ int isPerfect(const binary_tree_t *tree, int depth, int level)
         return 0;
 
     return isPerfect(tree->left, depth, level + 1) && isPerfect(tree->right, depth, level + 1);
+}
+/**
+ * binary_tree_is_perfect - Checks if a binary tree is perfect.
+ *
+ * @tree: A pointer to the root node of the tree to check.
+ *
+ * Return: If the tree is perfect, it returns 1. Otherwise, it returns 0.
+ */
+int binary_tree_is_perfect(const binary_tree_t *tree)
+{
+    int depth;
+
+    if (tree == NULL)
+        return 0;
+
+    depth = find_depth_left(tree);
+
+    return isPerfect(tree, depth, 0);
 }
